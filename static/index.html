@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="bho">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1530">
+<title>भोजपुरी गाइड</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Tajawal:wght@400;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --saffron:#FF9933; --gold:#F2B705; --vermilion:#E2492F; --night:#0B1530; --night2:#1B1F4B;
+    --ganga:#3FB2D6; --paper:#FFF8E1; --glass:rgba(255,255,255,.08); --line:rgba(255,255,255,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%}
+  body{color:var(--paper);font-family:"Mukta","Tajawal",system-ui,sans-serif;font-size:17px;line-height:1.5;
+    background:radial-gradient(800px 500px at 80% -10%,rgba(255,153,51,.3),transparent 60%),#06091a;
+    display:grid;place-items:center;overflow:hidden}
+  /* The app: full screen on phones, a phone-shaped frame on desktop */
+  .app{width:100%;height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    background:
+      radial-gradient(500px 320px at 90% -5%,rgba(255,153,51,.35),transparent 60%),
+      radial-gradient(420px 320px at -10% 40%,rgba(63,178,214,.22),transparent 60%),
+      linear-gradient(170deg,var(--night),var(--night2))}
+  @media (min-width:500px){
+    .app{width:392px;height:min(820px,94vh);border-radius:44px;border:10px solid #151a33;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px #2a3160}
+    .app::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:96px;height:22px;border-radius:14px;background:#06091a;z-index:10}
+  }
+  .appbar{padding:calc(env(safe-area-inset-top) + 18px) 18px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  @media (min-width:500px){.appbar{padding-top:38px}}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+  .logo{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:18px;
+    background:linear-gradient(135deg,var(--saffron),var(--vermilion));box-shadow:0 4px 14px rgba(255,153,51,.4)}
+  .pill{font-size:13px;font-weight:600;padding:3px 11px;border-radius:999px;border:1px solid var(--line);background:var(--glass);display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#7b84a8}
+  body.live .dot{background:#3be08a;box-shadow:0 0 10px #3be08a}
+  .hero{height:150px;border-radius:22px;background-size:cover;background-position:center;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.35);margin-bottom:6px}
+  .hero{position:relative;display:flex;align-items:flex-end;transition:background-image .3s}
+  #heroCap{padding:10px 14px;font:700 20px "Mukta","Tajawal",sans-serif;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+  .regionbar{padding:0 18px 8px}
+  #region{width:100%;appearance:none;-webkit-appearance:none;border:1px solid var(--line);background:var(--glass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFF8E1' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;
+    color:var(--paper);border-radius:14px;padding:9px 38px 9px 14px;font:700 16px "Mukta","Tajawal",sans-serif;cursor:pointer}
+  #region option{color:#0B1530}
+  #region:focus-visible{outline:3px solid var(--ganga);outline-offset:3px}
+  .screens{flex:1;position:relative;min-height:0}
+  .screen{position:absolute;inset:0;overflow-y:auto;padding:6px 18px 18px;display:none;animation:fade .25s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  h1{font-family:"Tiro Devanagari Hindi","Tajawal",serif;font-weight:400;font-size:38px;line-height:1.15;margin:8px 0 0;text-align:center;
+    background:linear-gradient(90deg,var(--gold),var(--saffron),#ffd9a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin:8px 0 0;text-align:center;font-size:15px;color:#d4d9f2}
+  .stage{display:grid;justify-items:center;gap:12px;margin-top:22px}
+  .mic{position:relative;width:190px;height:190px;display:grid;place-items:center}
+  .mic::before,.mic::after{content:"";pointer-events:none;position:absolute;inset:14px;border-radius:50%;border:2px solid var(--saffron);opacity:0}
+  body.live .mic::before{animation:ring 2.4s ease-out infinite}
+  body.live .mic::after{animation:ring 2.4s ease-out 1.2s infinite}
+  @keyframes ring{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.45);opacity:0}}
+  #talk{position:relative;width:140px;height:140px;border-radius:50%;border:0;color:#fff;font:700 20px "Mukta","Tajawal",sans-serif;cursor:pointer;
+    background:linear-gradient(145deg,var(--saffron),var(--vermilion));box-shadow:0 10px 36px rgba(226,73,47,.5),inset 0 2px 0 rgba(255,255,255,.35);transition:transform .15s}
+  #talk:active:not(:disabled){transform:scale(.94)}
+  #talk:disabled{opacity:.7}
+  #talk:focus-visible,.chip:focus-visible,.tab:focus-visible{outline:3px solid var(--ganga);outline-offset:3px}
+  #talk.live{background:linear-gradient(145deg,#3a4170,#1d2250);box-shadow:0 10px 36px rgba(0,0,0,.5),inset 0 0 0 2px var(--saffron)}
+  #status{min-height:1.5em;font-weight:600;color:#d4d9f2;text-align:center;font-size:15px}
+  #status.searching{color:var(--gold);animation:blink 1.2s ease-in-out infinite}
+  @keyframes blink{50%{opacity:.45}}
+  .note{font-size:13px;color:#aeb6dd;text-align:center;margin:14px 0 0}
+  .section-title{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#aeb6dd;margin:10px 0 12px;font-weight:600}
+  .places{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .chip{display:flex;flex-direction:column;justify-content:flex-end;text-align:start;min-height:122px;border:1px solid var(--line);background-color:var(--glass);background-size:cover;background-position:center;color:#fff;border-radius:18px;
+    padding:10px 12px;font:700 17px "Mukta","Tajawal",sans-serif;line-height:1.25;cursor:pointer;transition:transform .12s,filter .15s;overflow:hidden;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+  .chip small{font:400 12px "Mukta","Tajawal",sans-serif;color:#e4e8ff}
+  .chip:active:not(:disabled){transform:scale(.96)}
+  .chip.off{filter:grayscale(.6) brightness(.8)}
+  #log{min-height:100%}
+  .turn{margin:0 0 10px;padding:9px 13px;border-radius:18px 18px 18px 4px;max-width:86%;background:rgba(255,153,51,.16);border:1px solid rgba(255,153,51,.35)}
+  .turn small{display:block;font-weight:700;font-size:12px;color:var(--saffron)}
+  .turn.user{margin-left:auto;border-radius:18px 18px 4px 18px;background:rgba(63,178,214,.18);border-color:rgba(63,178,214,.35)}
+  .turn.user small{color:var(--ganga)}
+  .empty{opacity:.65;text-align:center;margin-top:80px}
+  .tabbar{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);background:rgba(11,21,48,.85);backdrop-filter:blur(12px);padding:6px 6px 2px}
+  .tab{background:none;border:0;color:#8f98c4;font:600 12px "Mukta","Tajawal",sans-serif;display:grid;justify-items:center;gap:0;padding:6px 0;border-radius:12px;cursor:pointer}
+  .tab span{font-size:22px;line-height:1.2}
+  .tab.active{color:var(--saffron)}
+  footer{padding:4px 10px calc(env(safe-area-inset-bottom) + 10px);text-align:center;font-size:12px;color:#8f98c4;background:rgba(11,21,48,.85)}
+  footer b{color:var(--gold)}
+  @media (prefers-reduced-motion:reduce){.screen{animation:none}body.live .mic::before,body.live .mic::after{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="appbar">
+    <div class="brand"><span class="logo">🪔</span><span id="brandName">भोजपुरी गाइड</span></div>
+    <div class="pill"><span class="dot"></span><span id="pill">Offline</span></div>
+  </div>
+
+  <div class="regionbar">
+    <select id="region" aria-label="Destination country">
+      <option value="india">🇮🇳 India · भारत</option>
+      <option value="abudhabi">🇦🇪 Abu Dhabi · أبوظبي</option>
+    </select>
+  </div>
+
+  <div class="screens">
+    <section class="screen active" id="v-talk" aria-label="Talk">
+      <div class="hero" id="hero"><span id="heroCap"></span></div>
+      <h1 id="title">रउआ के सुआगत बा</h1>
+      <p class="sub" id="subtitle">Live voice guide to India's famous places, spoken in Bhojpuri.</p>
+      <div class="stage">
+        <div class="mic"><button id="talk" type="button">शुरू करीं</button></div>
+        <div id="status" role="status" aria-live="polite">Not connected</div>
+      </div>
+      <p class="note">Tip: use headphones so the guide's voice doesn't leak into your microphone.</p>
+    </section>
+
+    <section class="screen" id="v-places" aria-label="Places">
+      <h2 class="section-title">Pick a destination</h2>
+      <div class="places" id="places"></div>
+      <p class="note">Tap a place and the guide starts and takes you there.</p>
+    </section>
+
+    <section class="screen" id="v-chat" aria-label="Conversation">
+      <h2 class="section-title">Conversation</h2>
+      <div id="log" aria-live="polite"><p class="empty">Conversation will appear here.</p></div>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <button class="tab active" data-v="talk" type="button"><span>🎙️</span>Talk</button>
+    <button class="tab" data-v="places" type="button"><span>🗺️</span>Places</button>
+    <button class="tab" data-v="chat" type="button"><span>💬</span>Chat</button>
+  </nav>
+  <footer>A product from <b>Bhaiya &amp; Company</b> · © 2026</footer>
+</div>
+
+<script>
+const REGIONS = {
+  india:{
+    lang:"bho", dir:"ltr", hero:"taj-mahal", brand:"भोजपुरी गाइड", title:"रउआ के सुआगत बा",
+    sub:"Live voice guide to India's famous places, spoken in Bhojpuri.",
+    start:"शुरू करीं", stop:"बंद करीं", guide:"गाइड", user:"रउआ",
+    searching:"🔎 इंटरनेट पर खोजत बानी: ", searchLabel:"🔎 इंटरनेट पर खोज", country:"India",
+    greet:"Greet the traveller by name (Bhaiya Ji) warmly and ask which place in India they would like to visit.",
+    places:[["वाराणसी","Varanasi","varanasi"],["ताजमहल, आगरा","Taj Mahal, Agra","taj-mahal"],["जयपुर","Jaipur","jaipur"],
+      ["बोधगया","Bodh Gaya","bodh-gaya"],["दिल्ली","Delhi","delhi"],["अमृतसर","Amritsar","amritsar"],["केरल","Kerala","kerala"],["गोवा","Goa","goa"]]
+  },
+  abudhabi:{
+    lang:"ar", dir:"rtl", hero:"sheikh-zayed", brand:"دليل أبوظبي", title:"أهلاً بك في أبوظبي",
+    sub:"Live voice guide to Abu Dhabi's famous places and museums, spoken in Arabic.",
+    start:"ابدأ", stop:"إيقاف", guide:"المرشد", user:"أنت",
+    searching:"🔎 أبحث في الإنترنت: ", searchLabel:"🔎 البحث في الإنترنت", country:"Abu Dhabi",
+    greet:"Greet the traveller by name (Bhaiya Ji) warmly and ask which place or museum in Abu Dhabi they would like to visit.",
+    places:[["جامع الشيخ زايد الكبير","Sheikh Zayed Grand Mosque","sheikh-zayed"],["لوفر أبوظبي","Louvre Abu Dhabi","louvre"],
+      ["قصر الوطن","Qasr Al Watan","qasr-al-watan"],["قصر الإمارات","Emirates Palace","emirates-palace"],["قصر الحصن","Qasr Al Hosn","qasr-al-hosn"],
+      ["جزيرة ياس","Yas Island & Ferrari World","yas"],["الكورنيش","Corniche","corniche"],["جزيرة السعديات","Saadiyat Island","saadiyat"]]
+  }
+};
+const regionEl = document.getElementById("region");
+let region = "india";
+const R = ()=>REGIONS[region];
+const talk = document.getElementById("talk");
+const statusEl = document.getElementById("status");
+const logEl = document.getElementById("log");
+const placesEl = document.getElementById("places");
+
+let ws=null, micCtx=null, micStream=null, outCtx=null, nextTime=0, sources=[];
+let lastRole=null, lastNode=null, pendingText=null;
+
+const WORKLET = `
+class Pcm extends AudioWorkletProcessor{
+  constructor(){super();this.buf=new Int16Array(1600);this.n=0;}
+  process(inputs){
+    const ch=inputs[0][0]; if(!ch) return true;
+    for(let i=0;i<ch.length;i++){
+      const s=Math.max(-1,Math.min(1,ch[i]));
+      this.buf[this.n++]=s<0?s*0x8000:s*0x7FFF;
+      if(this.n===this.buf.length){this.port.postMessage(this.buf.slice().buffer);this.n=0;}
+    }
+    return true;
+  }
+}
+registerProcessor("pcm",Pcm);`;
+
+function buildPlaces(){
+  placesEl.innerHTML="";
+  R().places.forEach(([local,en,img])=>{
+    const b=document.createElement("button");
+    b.className="chip"; b.type="button"; b.classList.toggle("off",!ws);
+    b.style.backgroundImage=`linear-gradient(to top,rgba(6,9,26,.88) 8%,rgba(6,9,26,.1) 65%),url(/static/img/${img}.jpg)`;
+    const t=document.createElement("span"); t.textContent=local; t.dir=R().dir;
+    const s=document.createElement("small"); s.textContent=en;
+    b.append(t,s);
+    b.onclick=()=>{
+      setHero(img,local,R().dir);
+      const text=`I, Bhaiya Ji, want to visit ${en}. Address me by name, say you are happy to take me there, and start telling me about ${en} now.`;
+      if(ws && ws.readyState===1) send({type:"text",text});
+      else { pendingText=text; if(!ws) start(); }   // not live yet: start the guide, then ask
+    };
+    placesEl.appendChild(b);
+  });
+}
+function setHero(img,caption,dir){
+  const hero=document.getElementById("hero");
+  hero.style.backgroundImage=`linear-gradient(to top,rgba(6,9,26,.75),transparent 65%),url(/static/img/${img}.jpg)`;
+  const cap=document.getElementById("heroCap"); cap.textContent=caption; cap.dir=dir||"ltr";
+  document.getElementById("v-talk").scrollTop=0;
+}
+function applyRegion(){
+  const r=R();
+  document.documentElement.lang=r.lang;
+  document.getElementById("brandName").textContent=r.brand;
+  const t=document.getElementById("title"); t.textContent=r.title; t.dir=r.dir;
+  document.getElementById("subtitle").textContent=r.sub;
+  document.title=r.brand;
+  setHero(r.hero,"");
+  talk.textContent = ws ? r.stop : r.start;
+  buildPlaces();
+  logEl.innerHTML='<p class="empty">Conversation will appear here.</p>'; lastRole=null;
+}
+
+function setStatus(t){statusEl.textContent=t; if(!t.startsWith("🔎")) statusEl.classList.remove("searching"); document.getElementById("pill").textContent=document.body.classList.contains("live")?"Live":"Offline"}
+function send(o){ if(ws&&ws.readyState===1) ws.send(JSON.stringify(o)); }
+function setChips(on){ placesEl.querySelectorAll(".chip").forEach(c=>c.classList.toggle("off",!on)); }
+
+function addText(role,text){
+  if(logEl.querySelector(".empty")) logEl.innerHTML="";
+  if(role!==lastRole){
+    lastNode=document.createElement("p");
+    lastNode.className="turn "+role;
+    const s=document.createElement("small"); s.textContent=role==="guide"?R().guide:R().user;
+    lastNode.dir=R().dir;
+    const t=document.createElement("span");
+    lastNode.append(s,t); logEl.appendChild(lastNode); lastRole=role;
+  }
+  lastNode.lastChild.textContent+=text;
+  logEl.scrollTop=logEl.scrollHeight;
+}
+
+function playPcm(buf){
+  // Gemini sends 16-bit little-endian PCM at 24 kHz.
+  const i16=new Int16Array(buf), f32=new Float32Array(i16.length);
+  for(let i=0;i<i16.length;i++) f32[i]=i16[i]/32768;
+  const ab=outCtx.createBuffer(1,f32.length,24000); ab.copyToChannel(f32,0);
+  const src=outCtx.createBufferSource(); src.buffer=ab; src.connect(outCtx.destination);
+  nextTime=Math.max(nextTime,outCtx.currentTime+0.02);
+  src.start(nextTime); nextTime+=ab.duration;
+  sources.push(src); src.onended=()=>{sources=sources.filter(s=>s!==src)};
+}
+function stopPlayback(){ sources.forEach(s=>{try{s.stop()}catch(e){}}); sources=[]; nextTime=0; }
+
+async function start(){
+  try{
+    setStatus("Connecting…"); talk.disabled=true;
+    outCtx=new AudioContext({sampleRate:24000});
+    micStream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true}});
+    micCtx=new AudioContext();
+    const url=URL.createObjectURL(new Blob([WORKLET],{type:"application/javascript"}));
+    await micCtx.audioWorklet.addModule(url);
+
+    ws=new WebSocket((location.protocol==="https:"?"wss://":"ws://")+location.host+"/ws?region="+region);
+    ws.binaryType="arraybuffer";
+    ws.onmessage=e=>{
+      if(e.data instanceof ArrayBuffer){ playPcm(e.data); return; }
+      const m=JSON.parse(e.data);
+      if(m.type==="ready"){
+        send({type:"start",sampleRate:micCtx.sampleRate});
+        const node=new AudioWorkletNode(micCtx,"pcm");
+        micCtx.createMediaStreamSource(micStream).connect(node);
+        node.port.onmessage=ev=>{ if(ws.readyState===1) ws.send(ev.data); };
+        talk.disabled=false; talk.classList.add("live"); document.body.classList.add("live"); talk.textContent=R().stop;
+        setStatus("Listening… speak to the guide"); setChips(true);
+        send({type:"text",text:pendingText||R().greet}); pendingText=null;
+      }
+      else if(m.type==="user"){ addText("user",m.text); }
+      else if(m.type==="guide"){ addText("guide",m.text); if(statusEl.textContent.startsWith("🔎")) setStatus("Listening… speak to the guide"); }
+      else if(m.type==="searching"){
+        setStatus(R().searching+m.text); statusEl.classList.add("searching"); lastRole=null;
+        if(logEl.querySelector(".empty")) logEl.innerHTML="";
+        const n=document.createElement("p"); n.className="turn guide"; n.dir=R().dir; n.innerHTML="<small></small>"; n.firstChild.textContent=R().searchLabel;
+        n.append(document.createTextNode(m.text)); logEl.appendChild(n); logEl.scrollTop=logEl.scrollHeight;
+      }
+      else if(m.type==="turn_complete"){ lastRole=null; }
+      else if(m.type==="interrupted"){ stopPlayback(); lastRole=null; }
+      else if(m.type==="error"){ setStatus("Error: "+m.text); }
+    };
+    const mine=ws; ws.onclose=()=>{ if(ws===mine) stop("Disconnected"); };
+    ws.onerror=()=>setStatus("Connection error. Is the server running?");
+  }catch(err){
+    setStatus("Could not start: "+err.message); stop(statusEl.textContent);
+  }
+}
+
+function stop(msg="Not connected"){
+  pendingText=null;
+  try{ws&&ws.readyState<2&&ws.close()}catch(e){}
+  micStream&&micStream.getTracks().forEach(t=>t.stop());
+  micCtx&&micCtx.close().catch(()=>{}); stopPlayback(); outCtx&&outCtx.close().catch(()=>{});
+  ws=micCtx=micStream=outCtx=null; lastRole=null;
+  talk.disabled=false; talk.classList.remove("live"); document.body.classList.remove("live"); talk.textContent=R().start;
+  setChips(false); setStatus(msg);
+}
+
+function showView(v){
+  document.querySelectorAll(".screen").forEach(e=>e.classList.toggle("active",e.id==="v-"+v));
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.v===v));
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>showView(t.dataset.v));
+placesEl.addEventListener("click",e=>{ if(e.target.closest(".chip")) showView("talk"); });
+
+regionEl.onchange=()=>{
+  const wasLive=!!ws;
+  if(wasLive) stop("Switching…");
+  region=regionEl.value; applyRegion();
+  if(wasLive) start();
+};
+applyRegion();
+
+talk.onclick=()=>{ ws ? stop() : start(); };
+</script>
+</body>
+</html>

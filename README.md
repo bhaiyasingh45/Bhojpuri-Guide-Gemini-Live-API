@@ -26,4 +26,6 @@ Both guides are told the traveller is "Bhaiya Ji" and must always use that name 
 Single page in `static/index.html` (no build step): mobile-app layout (full screen on phones, phone-shaped frame on desktop) with a bottom tab bar (Talk / Places / Chat), pulsing mic button while live, and an "A product from Bhaiya & Company" footer.
 
 ## Images
+The browser tab icon is `static/favicon.svg`.
+
 Place photos in `static/img/` (16 files, 330px wide) were downloaded from the lead images of the matching English Wikipedia articles (Wikimedia Commons; each file keeps its own CC / public-domain licence, so check the file's Commons page and credit the author before any public release). Articles used: Dashashwamedh Ghat, Taj Mahal, Jaipur, Mahabodhi Temple, India Gate, Golden Temple, Kerala backwaters, Goa, Sheikh Zayed Grand Mosque, Louvre Abu Dhabi, Qasr Al Watan, Emirates Palace, Qasr Al Hosn, Yas Island, Corniche (Abu Dhabi), Saadiyat Island. The Talk tab hero shows the Taj Mahal (India) or Sheikh Zayed Grand Mosque (Abu Dhabi) by default and changes to the photo and name of whichever place you tap.

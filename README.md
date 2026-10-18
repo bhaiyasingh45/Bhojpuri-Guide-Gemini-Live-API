@@ -21,6 +21,13 @@ A dropdown under the top bar switches the destination: **India** (guide speaks B
 ## Traveller name
 Both guides are told the traveller is "Bhaiya Ji" and must always use that name (Bhojpuri: भइया जी, Arabic: بهَيَّا جي). Edit the "THE TRAVELLER'S NAME" block in each prompt in `server.py` to change it.
 
+## Tests
+```bash
+pip install -r requirements-dev.txt
+python -m pytest tests
+```
+Covers the health endpoint, the language/name guardrails in the prompts, and the search tool without a key. No network or real API keys are used.
+
 ## Notes
 - Audio-only Live sessions are limited to 15 minutes unless you add session management.
 - Use headphones to avoid echo.

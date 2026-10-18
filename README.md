@@ -9,6 +9,9 @@ uvicorn server:app --reload --port 8000
 ```
 Open http://localhost:8000 (localhost is allowed to use the microphone; any other host needs HTTPS).
 
+## Health check
+`GET /health` returns `{"status":"ok","regions":[...],"web_search":true|false}` (it only says whether a Tavily key is set, never the key).
+
 ## Web search
 The model has a `web_search` tool backed by Tavily. Add `TAVILY_API_KEY` to your env file; without it the tool replies that search is not configured. The UI status line shows the query while a search runs.
 

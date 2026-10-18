@@ -185,6 +185,11 @@ async def index():
     return FileResponse(BASE / "static" / "index.html")
 
 
+@app.get("/health")
+async def health():
+    return {"status": "ok", "regions": list(REGIONS), "web_search": bool(TAVILY_API_KEY)}
+
+
 @app.websocket("/ws")
 async def ws_endpoint(ws: WebSocket, region: str = "india"):
     await ws.accept()

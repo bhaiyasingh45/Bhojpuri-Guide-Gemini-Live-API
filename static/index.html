@@ -314,8 +314,10 @@ regionEl.onchange=()=>{
   const wasLive=!!ws;
   if(wasLive) stop("Switching…");
   region=regionEl.value; applyRegion();
+  try{ localStorage.setItem("region",region); }catch(e){}
   if(wasLive) start();
 };
+try{ const saved=localStorage.getItem("region"); if(saved&&REGIONS[saved]){ region=saved; regionEl.value=saved; } }catch(e){}
 applyRegion();
 
 talk.onclick=()=>{ ws ? stop() : start(); };

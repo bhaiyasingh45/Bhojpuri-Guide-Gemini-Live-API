@@ -16,7 +16,7 @@ Open http://localhost:8000 (localhost is allowed to use the microphone; any othe
 The model has a `web_search` tool backed by Tavily. Add `TAVILY_API_KEY` to your env file; without it the tool replies that search is not configured. The UI status line shows the query while a search runs.
 
 ## Regions
-A dropdown under the top bar switches the destination: **India** (guide speaks Bhojpuri, Indian places) or **Abu Dhabi** (guide speaks Arabic, mosques/museums such as Sheikh Zayed Grand Mosque and Louvre Abu Dhabi). The browser connects to `/ws?region=india|abudhabi`; `server.py` picks the matching system prompt (`REGIONS`). Switching while live restarts the session in the new language. Verified 2026-10-15 that the Live model answers in Arabic with audio.
+The last chosen destination is remembered in the browser (localStorage). A dropdown under the top bar switches the destination: **India** (guide speaks Bhojpuri, Indian places) or **Abu Dhabi** (guide speaks Arabic, mosques/museums such as Sheikh Zayed Grand Mosque and Louvre Abu Dhabi). The browser connects to `/ws?region=india|abudhabi`; `server.py` picks the matching system prompt (`REGIONS`). Switching while live restarts the session in the new language. Verified 2026-10-15 that the Live model answers in Arabic with audio.
 
 ## Traveller name
 Both guides are told the traveller is "Bhaiya Ji" and must always use that name (Bhojpuri: भइया जी, Arabic: بهَيَّا جي). Edit the "THE TRAVELLER'S NAME" block in each prompt in `server.py` to change it.

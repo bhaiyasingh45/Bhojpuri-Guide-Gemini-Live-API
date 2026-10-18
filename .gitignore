@@ -24,3 +24,6 @@ venv/
 
 # Logs
 *.log
+
+# Full working copy; code is moved from here into git a little each day
+archive/

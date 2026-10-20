@@ -13,7 +13,7 @@ Open http://localhost:8000 (localhost is allowed to use the microphone; any othe
 `GET /health` returns `{"status":"ok","regions":[...],"web_search":true|false}` (it only says whether a Tavily key is set, never the key).
 
 ## Web search
-The model has a `web_search` tool backed by Tavily. Add `TAVILY_API_KEY` to your env file; without it the tool replies that search is not configured. The UI status line shows the query while a search runs.
+The model has a `web_search` tool backed by Tavily. Add `TAVILY_API_KEY` to your env file; without it the tool replies that search is not configured. The UI status line shows the query while a search runs. Empty queries are rejected and queries are capped at 300 characters.
 
 ## Regions
 The last chosen destination is remembered in the browser (localStorage). A dropdown under the top bar switches the destination: **India** (guide speaks Bhojpuri, Indian places) or **Abu Dhabi** (guide speaks Arabic, mosques/museums such as Sheikh Zayed Grand Mosque and Louvre Abu Dhabi). The browser connects to `/ws?region=india|abudhabi`; `server.py` picks the matching system prompt (`REGIONS`). Switching while live restarts the session in the new language. Verified 2026-10-15 that the Live model answers in Arabic with audio.

@@ -39,3 +39,9 @@ def test_live_config_has_search_tool_for_each_region():
     for region in server.REGIONS:
         cfg = server.live_config(region)
         assert cfg.tools, region
+
+
+def test_web_search_rejects_empty_query(monkeypatch):
+    monkeypatch.setattr(server, "TAVILY_API_KEY", "dummy")
+    for q in ("", "   ", None):
+        assert asyncio.run(server.web_search(q))["error"] == "Empty search query."

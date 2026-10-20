@@ -84,7 +84,13 @@ SEARCH_TOOL = types.Tool(function_declarations=[types.FunctionDeclaration(
 )])
 
 
+MAX_QUERY_CHARS = 300
+
+
 async def web_search(query: str) -> dict:
+    query = (query or "").strip()[:MAX_QUERY_CHARS]
+    if not query:
+        return {"error": "Empty search query."}
     if not TAVILY_API_KEY:
         return {"error": "Web search is not configured (TAVILY_API_KEY missing)."}
     try:

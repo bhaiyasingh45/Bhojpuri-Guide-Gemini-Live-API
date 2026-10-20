@@ -28,6 +28,13 @@ python -m pytest tests
 ```
 Covers the health endpoint, the language/name guardrails in the prompts, and the search tool without a key. No network or real API keys are used.
 
+## Troubleshooting
+- **Button does nothing / "Could not start":** allow the microphone for localhost in the browser, then hard-refresh (Cmd+Shift+R).
+- **"Error: ..." in the status line:** the server could not open the Gemini Live session. Check `GEMINI_API_KEY` and `GEMINI_LIVE_MODEL` in your env file.
+- **Guide never searches the web:** `GET /health` shows `"web_search": false` when `TAVILY_API_KEY` is missing. Restart the server after editing the env file.
+- **Voice cuts itself off or echoes:** use headphones.
+- **Session ends after about 15 minutes:** audio-only Live sessions have that limit; press the button to start again.
+
 ## Notes
 - Audio-only Live sessions are limited to 15 minutes unless you add session management.
 - Use headphones to avoid echo.
